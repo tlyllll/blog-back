@@ -6,7 +6,10 @@ export class UsersEntity {
   id: number;
 
   @Column({ length: 20 })
-  name: string;
+  email: string;
+
+  @Column({ length: 20 })
+  phone: string;
 
   @Column({ length: 20 })
   password: string;

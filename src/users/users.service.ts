@@ -9,11 +9,11 @@ export class UsersService {
     private usersRepository: Repository<UsersEntity>,
   ) {}
   async create(post: Partial<UsersEntity>): Promise<UsersEntity> {
-    const { name, password } = post;
-    if (!name || !password) {
+    const { email, phone, nickname, password } = post;
+    if (!email || !password || !phone || !nickname) {
       throw new HttpException(JSON.stringify(post) + ' ', 401);
     }
-    const user = await this.usersRepository.findOne({ where: { name } });
+    const user = await this.usersRepository.findOne({ where: { phone } });
     if (user) {
       throw new HttpException('用户已存在', 401);
     }
