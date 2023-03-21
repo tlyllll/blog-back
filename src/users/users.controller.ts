@@ -9,12 +9,11 @@ import {
   Put,
 } from '@nestjs/common';
 import { UsersEntity } from './users.entity';
-
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post('add')
+  @Post('register')
   async add(@Body() user) {
     return await this.usersService.create(user);
   }

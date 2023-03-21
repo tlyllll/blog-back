@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import envConfig from '../config/env';
 import { UsersEntity } from './users/users.entity';
-
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -31,6 +31,7 @@ import { UsersEntity } from './users/users.entity';
       }),
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController, UsersController],
   providers: [AppService, UsersService],

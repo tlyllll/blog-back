@@ -1,7 +1,8 @@
+import { Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 const isProd = process.env.NODE_ENV === 'production';
-
+Logger.log('isProd ======= ' + isProd);
 function parseEnv() {
   const localEnv = path.resolve('.env');
   const prodEnv = path.resolve('.env.prod');
