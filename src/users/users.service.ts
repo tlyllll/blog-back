@@ -35,7 +35,7 @@ export class UsersService {
   }
 
   async findById(id): Promise<UsersEntity> {
-    return this.usersRepository.findOne({ where: id });
+    return this.usersRepository.findOne({ where: { id } });
   }
 
   async updateById(id, user): Promise<UsersEntity> {

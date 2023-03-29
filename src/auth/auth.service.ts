@@ -15,7 +15,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async findOneById(id: number) {
+  async findOneById(id) {
     return await this.usersRepository.findOne({ where: { id } });
   }
 

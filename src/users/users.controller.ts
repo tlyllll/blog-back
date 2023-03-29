@@ -23,7 +23,7 @@ export class UsersController {
     return await this.usersService.findAll();
   }
 
-  @Get(':id')
+  @Get('getId')
   async findById(@Param('id') id) {
     return await this.usersService.findById(id);
   }

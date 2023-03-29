@@ -17,10 +17,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
-    const existUser = await this.authService.findOneById(payload.id);
     console.log('4-验证回调');
+    const existUser = await this.authService.findOneById(payload.id);
+
     if (!existUser) {
       throw new UnauthorizedException('token不正确');
     }
+    return existUser;
   }
 }

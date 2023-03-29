@@ -1,15 +1,17 @@
+import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { LoginInfoDTO } from './../users/dto/loginInfo.dto';
 import { AuthService } from './auth.service';
 import {
   Controller,
   Post,
+  Get,
   UseGuards,
   Body,
   BadRequestException,
   Logger,
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('授权模块')
 @Controller('auth')
@@ -30,5 +32,12 @@ export class AuthController {
         message: '登录失败',
       });
     }
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @ApiBearerAuth()
+  @Get('is_login')
+  async isLogin() {
+    return true;
   }
 }
