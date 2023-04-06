@@ -8,8 +8,8 @@ import {
   Get,
   UseGuards,
   Body,
-  BadRequestException,
   Logger,
+  HttpException,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 
@@ -28,9 +28,7 @@ export class AuthController {
       Logger.log('login start');
       return await this.authService.login(loginBody);
     } catch (e) {
-      throw new BadRequestException({
-        message: '登录失败',
-      });
+      throw new HttpException('登录失败', 400);
     }
   }
 
@@ -38,6 +36,10 @@ export class AuthController {
   @ApiBearerAuth()
   @Get('is_login')
   async isLogin() {
-    return true;
+    try {
+      return true;
+    } catch (e) {
+      throw new HttpException('未登录', 403);
+    }
   }
 }

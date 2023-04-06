@@ -1,7 +1,7 @@
 import { AuthService } from './auth.service';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 // import * as dotenv from 'dotenv';
 
 // dotenv.config();
@@ -21,7 +21,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const existUser = await this.authService.findOneById(payload.id);
 
     if (!existUser) {
-      throw new UnauthorizedException('token不正确');
+      throw new HttpException('token不正确', 403);
     }
     return existUser;
   }
