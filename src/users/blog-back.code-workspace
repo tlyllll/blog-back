@@ -1,10 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "../../../myWorld"
-		},
-		{
-			"path": "../.."
+			"path": "../../../react-demo"
 		}
 	],
 	"settings": {}

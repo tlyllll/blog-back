@@ -20,6 +20,13 @@ export class UsersEntity {
   nickname: string;
 
   @Column({
+    name: 'birth_day',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  birth: Date;
+
+  @Column({
     name: 'create_time',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',

@@ -20,7 +20,7 @@ import envConfig from 'config/env';
     PassportModule,
     JwtModule.register({
       secret: process.env.JWT_KEY,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '10h' },
     }),
     TypeOrmModule.forFeature([UsersEntity]),
     UsersModule,
